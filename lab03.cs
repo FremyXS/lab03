@@ -63,27 +63,15 @@ namespace lab03_ver2
 
             SecondStroka(KolChiselX, KolChiselFunc);
 
-            int RaznX;
-            int RaznFunc;
+            double XinMassive;
+            double FuncInMassive;
             for (int i = 0; i < KolX; i++) 
             {
-                RaznX = Math.Abs(KolChiselX - MassivKolX[i].ToString().Length);
-                RaznFunc = Math.Abs(KolChiselFunc - MassivFunc[i].ToString().Length);
-                Console.Write("| ");
-                if (RaznX > 0)
-                {
-                    for (int x = 0; x < RaznX; x++)
-                        Console.Write(" ");
-                }
-                Console.Write(MassivKolX[i]);
-                Console.Write(" | ");
-                if (RaznFunc > 0)
-                {
-                    for (int func = 0; func < RaznFunc; func++)
-                        Console.Write(" ");
-                }
-                Console.Write(MassivFunc[i]);
-                Console.WriteLine(" |");
+                XinMassive = MassivKolX[i];
+                FuncInMassive = MassivFunc[i];
+
+                Osnova(KolChiselX, KolChiselFunc, XinMassive, FuncInMassive);
+
             }
 
         }
@@ -148,6 +136,29 @@ namespace lab03_ver2
             Console.WriteLine("-|");
         }
 
-        
+        static void Osnova(int KolChiselX, int KolChiselFunc, double XinMassive, double FuncInMassive) 
+        {
+            int RaznX;
+            int RaznFunc;
+
+            RaznX = Math.Abs(KolChiselX - XinMassive.ToString().Length);
+            RaznFunc = Math.Abs(KolChiselFunc - FuncInMassive.ToString().Length);
+            Console.Write("| ");
+            if (RaznX > 0)
+            {
+                for (int x = 0; x < RaznX; x++)
+                    Console.Write(" ");
+            }
+            Console.Write(XinMassive);
+            Console.Write(" | ");
+            if (RaznFunc > 0)
+            {
+                for (int func = 0; func < RaznFunc; func++)
+                    Console.Write(" ");
+            }
+            Console.Write(FuncInMassive);
+            Console.WriteLine(" |");
+
+        }
     }
 }
