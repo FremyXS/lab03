@@ -10,9 +10,19 @@ namespace lab03_ver2
             Console.WriteLine("Начало");
             double x1 = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Конец");
-            double x2 = Convert.ToDouble(Console.ReadLine());
+            double x2;
+            do
+            {
+                x2 = Convert.ToDouble(Console.ReadLine());
+                if (x2 < x1)
+                    Console.WriteLine("Область значений может идти только по возрастанию.");
+                else
+                    break;
+            } while (x2 < x1);
+            
             Console.WriteLine("Выберите в какую стпень возвести X ");
             double y = Convert.ToDouble(Console.ReadLine());
+
             double ChisloX = x1;
             int KolX = 0;
             for (; x1 <= x2; x1 += 0.01) 
@@ -47,19 +57,53 @@ namespace lab03_ver2
                     }
                 }
             }
-            Console.Write("|-");
-            for (int n = 0; n < KolChiselX; n++)
-                Console.Write("-");
-            Console.Write("-|-");
-            for (int n = 0; n < KolChiselFunc; n++)
-                Console.Write("-");
-            Console.WriteLine("-|");
+            FirstStroka(KolChiselX, KolChiselFunc);
 
+            StrokaXandY(KolChiselX, KolChiselFunc);
 
-            Console.Write("| ");
-            if (KolChiselX % 2 == 0) 
+            SecondStroka(KolChiselX, KolChiselFunc);
+
+            int RaznX;
+            int RaznFunc;
+            for (int i = 0; i < KolX; i++) 
             {
-                for (int n =0; n < KolChiselX/2; n++ ) 
+                RaznX = Math.Abs(KolChiselX - MassivKolX[i].ToString().Length);
+                RaznFunc = Math.Abs(KolChiselFunc - MassivFunc[i].ToString().Length);
+                Console.Write("| ");
+                if (RaznX > 0)
+                {
+                    for (int x = 0; x < RaznX; x++)
+                        Console.Write(" ");
+                }
+                Console.Write(MassivKolX[i]);
+                Console.Write(" | ");
+                if (RaznFunc > 0)
+                {
+                    for (int func = 0; func < RaznFunc; func++)
+                        Console.Write(" ");
+                }
+                Console.Write(MassivFunc[i]);
+                Console.WriteLine(" |");
+            }
+
+        }
+        static void FirstStroka(int KolChiselX, int KolChiselFunc) 
+        {
+           Console.Write("|-");
+           for (int n = 0; n < KolChiselX; n++)
+               Console.Write("-");
+           Console.Write("-|-");
+           for (int n = 0; n < KolChiselFunc; n++)
+               Console.Write("-");
+           Console.WriteLine("-|");
+        }
+
+        static void StrokaXandY(int KolChiselX, int KolChiselFunc) 
+        {
+            Console.Write("| ");
+            if (KolChiselX % 2 == 0)
+            {
+                for (int n = 0; n < KolChiselX / 2; n++)
                     Console.Write(" ");
                 Console.Write("x");
                 for (int n = 0; n < KolChiselX / 2 - 1; n++)
@@ -91,7 +135,10 @@ namespace lab03_ver2
                     Console.Write(" ");
             }
             Console.WriteLine(" |");
+        }
 
+        static void SecondStroka(int KolChiselX, int KolChiselFunc) 
+        {
             Console.Write("|-");
             for (int n = 0; n < KolChiselX; n++)
                 Console.Write("-");
@@ -99,13 +146,8 @@ namespace lab03_ver2
             for (int n = 0; n < KolChiselFunc; n++)
                 Console.Write("-");
             Console.WriteLine("-|");
-
-
-            for (int i = 0; i < KolX; i++) 
-            {
-                Console.WriteLine($"| {MassivKolX[i]} | {MassivFunc[i]} |");
-            }
-
         }
+
+        
     }
 }
