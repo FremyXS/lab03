@@ -6,8 +6,8 @@ namespace FileSearch
 {
     public class AllRazborFile
     {
-        private string text = File.ReadAllText(@"C:\Users\mrfra\Desktop\1\input.txt");
-        private string OutPut = @"C:\Users\mrfra\Desktop\1\output.txt";
+        private string text = File.ReadAllText(@"D:\lab\AdvancedCalculator\input.txt");
+        private string OutPut = @"D:\lab\AdvancedCalculator\output.txt";
 
         public List<string> Peremen = new List<string>();
 
